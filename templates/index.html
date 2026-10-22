@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Support Finder 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">NGO Support Finder 3</a>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <section class="hero mb-4">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge bg-success-subtle text-success-emphasis mb-3">Impactful Giving Platform</span>
+                    <h1 class="display-5 fw-bold mb-3">Find the right NGO support for every cause.</h1>
+                    <p class="lead text-muted">
+                        Discover trusted organizations working in education, healthcare, women empowerment,
+                        housing, food security, and environmental action.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="stats-card p-4 rounded-4 shadow-sm border">
+                        <div class="mb-3">
+                            <span class="stats-label">Active NGOs</span>
+                            <h3 id="ngoCount" class="fw-bold mb-0">0</h3>
+                        </div>
+                        <div class="mb-3">
+                            <span class="stats-label">Support Requests</span>
+                            <h3 class="fw-bold mb-0">Live</h3>
+                        </div>
+                        <div>
+                            <span class="stats-label">Categories</span>
+                            <h3 class="fw-bold mb-0">6</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="filters-panel card border-0 shadow-sm mb-4">
+            <div class="card-body p-4">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label for="categoryFilter" class="form-label fw-semibold">Category</label>
+                        <select id="categoryFilter" class="form-select">
+                            <option value="All">All</option>
+                            <option value="Education">Education</option>
+                            <option value="Environment">Environment</option>
+                            <option value="Women Empowerment">Women Empowerment</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Food Security">Food Security</option>
+                            <option value="Housing">Housing</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="searchInput" class="form-label fw-semibold">Search</label>
+                        <input id="searchInput" type="text" class="form-control" placeholder="Search NGOs by name, city, or cause" />
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <button id="searchButton" class="btn btn-primary btn-lg">Search</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row g-4">
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="fw-bold mb-0">NGO Directory</h2>
+                    <span id="resultBadge" class="badge bg-light text-dark border">0 results</span>
+                </div>
+                <div id="ngoList" class="row g-3"></div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="support-card card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-3">Submit a Support Request</h3>
+                        <form id="requestForm">
+                            <div class="mb-3">
+                                <label class="form-label" for="requesterName">Your Name</label>
+                                <input type="text" id="requesterName" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="requesterEmail">Email</label>
+                                <input type="email" id="requesterEmail" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="requestedNgo">NGO / Organization</label>
+                                <input type="text" id="requestedNgo" class="form-control" placeholder="e.g. GreenEarth Care" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="supportCategory">Cause Category</label>
+                                <select id="supportCategory" class="form-select" required>
+                                    <option value="">Select a category</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Environment">Environment</option>
+                                    <option value="Women Empowerment">Women Empowerment</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Food Security">Food Security</option>
+                                    <option value="Housing">Housing</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="requestMessage">Describe Your Need</label>
+                                <textarea id="requestMessage" class="form-control" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Send Request</button>
+                        </form>
+                        <div id="requestAlert" class="alert mt-3 d-none" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
